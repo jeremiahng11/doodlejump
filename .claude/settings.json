@@ -11,7 +11,26 @@
       "Bash(git config *)",
       "Bash(git branch *)",
       "Bash(git remote *)",
-      "Bash(echo \"remote: $\\(git remote get-url origin\\)\")"
+      "Bash(echo \"remote: $\\(git remote get-url origin\\)\")",
+      "Bash(python3 -m venv /tmp/pgvenv)",
+      "Bash(/tmp/pgvenv/bin/pip install *)",
+      "Bash(/tmp/pgvenv/bin/python -m pygbag --version)",
+      "Bash(/tmp/pgvenv/bin/python -m pygbag --build main.py)",
+      "Bash(echo \"=== EXIT CODE: $? ===\")",
+      "Read(//tmp/**)",
+      "Bash(command -v ffmpeg)",
+      "Bash(ffmpeg -version)",
+      "Bash(echo \"ffmpeg: yes \\($\\(ffmpeg -version)",
+      "Bash(command -v afconvert)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(afconvert -hf)",
+      "Bash(afconvert -f Oggf -d vorb shoot_1.mp3 /tmp/_test.ogg)",
+      "Bash(afconvert -f WAVE -d LEI16 shoot_1.mp3 /tmp/_test.wav)",
+      "Bash(afconvert -f Oggf -d vorb /tmp/_test.wav /tmp/_test.ogg)",
+      "Bash(cd /Users/jeremiah/Documents/RudraProjects/Doodle-Jump-python *)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
     ]
   }
 }

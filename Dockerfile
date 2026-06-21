@@ -12,7 +12,9 @@ RUN pip install --no-cache-dir pygbag
 COPY . .
 
 # Produces /src/build/web/ : index.html + the bundled game + loader.
-RUN python -m pygbag --build main.py
+# --disable-sound-format-error: assets are WAV (natively supported by the
+# in-browser SDL2_mixer); this skips pygbag's OGG-preferred pre-check.
+RUN python -m pygbag --build --disable-sound-format-error main.py
 
 # ---- Serve stage: static nginx serving the WASM build ----
 FROM nginx:alpine
