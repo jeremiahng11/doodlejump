@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(command -v docker)",
+      "Bash(docker --version)",
+      "Bash(echo \"docker: yes \\($\\(docker --version 2>/dev/null\\)\\)\")",
+      "Bash(docker info *)",
+      "Bash(python3 -m py_compile main.py game.py)",
+      "Bash(git init *)",
+      "Bash(git rm *)",
+      "Bash(git config *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(echo \"remote: $\\(git remote get-url origin\\)\")"
+    ]
+  }
+}

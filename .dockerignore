@@ -1,0 +1,10 @@
+.git
+.gitbook
+.vscode
+__pycache__
+**/__pycache__
+*.pyc
+build
+.aleta
+README.md
+SUMMARY.md
