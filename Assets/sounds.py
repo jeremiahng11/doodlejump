@@ -1,25 +1,41 @@
+import sys
 import pygame
+
 pygame.mixer.init()
-jump = pygame.mixer.Sound("Assets/Sounds/jump.wav")
-shoot_1 = pygame.mixer.Sound("Assets/Sounds/shoot_1.wav")
-shoot_2 = pygame.mixer.Sound("Assets/Sounds/shoot_2.wav")
-tile_break = pygame.mixer.Sound("Assets/Sounds/break.wav")
-tile_disappear = pygame.mixer.Sound("Assets/Sounds/pop.wav")
-button = pygame.mixer.Sound("Assets/Sounds/button.wav")
-monster =  pygame.mixer.Sound("Assets/Sounds/monster.wav")
-fall =  pygame.mixer.Sound("Assets/Sounds/fall.wav")
-thump =  pygame.mixer.Sound("Assets/Sounds/thump.wav")
-die_1 =  pygame.mixer.Sound("Assets/Sounds/die_1.wav")
-die_2 =  pygame.mixer.Sound("Assets/Sounds/die_2.wav")
-suck = pygame.mixer.Sound("Assets/Sounds/suck.wav")
-spring = pygame.mixer.Sound("Assets/Sounds/spring.wav")
-trampoline = pygame.mixer.Sound("Assets/Sounds/trampoline.wav")
-jetpack = pygame.mixer.Sound("Assets/Sounds/jetpack.wav")
-propeller = pygame.mixer.Sound("Assets/Sounds/propeller.wav")
-block = pygame.mixer.Sound("Assets/Sounds/block.wav")
-activate_shield = pygame.mixer.Sound("Assets/Sounds/activate_shield.wav")
-explosion = pygame.mixer.Sound("Assets/Sounds/explode.wav")
 
-ufo = pygame.mixer.Sound("Assets/Sounds/ufo.wav")
-ufo_suck = pygame.mixer.Sound("Assets/Sounds/ufo_suck.wav")
+# pygbag/web (SDL2_mixer under WebAssembly) only plays OGG; desktop pygame plays
+# WAV fine. We keep WAV in the repo for desktop and the Docker build transcodes
+# them to OGG for the web bundle. The extension is chosen at runtime and the
+# path is built with an f-string on purpose: pygbag's build-time "optimizing
+# pass" rewrites *static* "....wav" string literals to ".ogg" (which previously
+# left the code pointing at .ogg files that did not exist). A computed path is
+# not rewritten, so the reference always matches the files actually shipped.
+_EXT = "ogg" if sys.platform == "emscripten" else "wav"
 
+
+def _sound(name):
+    return pygame.mixer.Sound(f"Assets/Sounds/{name}.{_EXT}")
+
+
+jump = _sound("jump")
+shoot_1 = _sound("shoot_1")
+shoot_2 = _sound("shoot_2")
+tile_break = _sound("break")
+tile_disappear = _sound("pop")
+button = _sound("button")
+monster = _sound("monster")
+fall = _sound("fall")
+thump = _sound("thump")
+die_1 = _sound("die_1")
+die_2 = _sound("die_2")
+suck = _sound("suck")
+spring = _sound("spring")
+trampoline = _sound("trampoline")
+jetpack = _sound("jetpack")
+propeller = _sound("propeller")
+block = _sound("block")
+activate_shield = _sound("activate_shield")
+explosion = _sound("explode")
+
+ufo = _sound("ufo")
+ufo_suck = _sound("ufo_suck")
